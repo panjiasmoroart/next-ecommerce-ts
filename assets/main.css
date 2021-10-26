@@ -2,3 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@layer components {
+  .fit {
+    min-height: calc(100vh - 88px);
+  }
+}
