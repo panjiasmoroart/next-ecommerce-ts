@@ -1,3 +1,4 @@
+import Home from "pages";
 import { FC } from "react";
 
 const Layout: FC = ({ children }) => {
@@ -9,3 +10,4 @@ const Layout: FC = ({ children }) => {
 }
 
 export default Layout;
+
