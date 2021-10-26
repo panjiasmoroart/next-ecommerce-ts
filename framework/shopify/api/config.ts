@@ -1,13 +1,14 @@
+import { ApiConfig } from "@common/types/api";
 import { fetchApi } from "../utils";
 
 class Config {
-  private config: any
+  private config: ApiConfig
 
-  constructor(config: any) {
+  constructor(config: ApiConfig) {
     this.config = config
   }
 
-  getConfig(): any {
+  getConfig(): ApiConfig {
     return this.config
   }
 }
