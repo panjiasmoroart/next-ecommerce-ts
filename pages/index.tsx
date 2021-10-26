@@ -20,7 +20,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   
   return (
-    <div>
+    <div className="container mx-auto my-8">
       { JSON.stringify(products) }
     </div>
   )
