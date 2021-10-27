@@ -8,23 +8,15 @@
   width: 200px;
   height: 200px;
   background-color: darkcyan;
-  margin: 1px;
+  /* margin: 1px; */
 
   /* flex-grow | flex-shrink ?? flex-basis */
   /* 1 | 1 | 0 */
-  /* flex: 1; */
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: 1;
 }
 
 .child:first-child {
-  flex-grow: 1;
-  flex-shrink: 2;
+  flex-basis: 20%;
   background-color: coral;
 }
 
-.child:last-child {
-  flex-grow: 1;
-  flex-shrink: 5;
-  background-color: darkgrey;
-}
