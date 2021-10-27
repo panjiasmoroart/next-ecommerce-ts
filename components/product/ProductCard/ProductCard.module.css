@@ -1,5 +1,44 @@
 .root {
   @apply relative;
+
+  &:nth-child(6n + 1) .productBg {
+    @apply bg-violet;
+  }
+
+  &:nth-child(6n + 3) .productBg {
+    @apply bg-pink;
+  }
+
+  &:nth-child(6n + 5) .productBg {
+    @apply bg-blue;
+  }
+
+  &:nth-child(6n + 6) .productBg {
+    @apply bg-cyan;
+  }
+}
+
+/* 
+&:nth-child(6n + 1)  
+
+"1" "2" "3"
+"4" "5" "6"
+
+"1" "2" "3"
+"4" "5" "6" 
+*/
+
+/* 
+&:nth-child(3n + 1)   
+
+"1" "2" "3"
+
+"1" "2" "3"
+*/
+
+.productBg {
+  @apply absolute inset-0 z-0;
+  background-color: #212529;
 }
 
 .productTag {
