@@ -16,7 +16,15 @@
 }
 
 .layoutA {
-  color: red;
+  /* start elemen 1, 7, 13 */
+  /* start elemen 5, 11, 17 */
+
+  & > *:nth-child(6n + 1),
+  & > *:nth-child(6n + 5) {
+    @screen lg {
+      @apply col-span-2 row-span-2;
+    }
+  }
 }
 
 .layoutB {
