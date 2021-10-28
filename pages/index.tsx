@@ -39,7 +39,8 @@ export default function Home({
         {products.slice(0, 3).map(product => 
           <ProductCard 
             key={product.id}
-            product={product} 
+            product={product}
+            variant="slim" 
           />
         )}
       </Marquee>
