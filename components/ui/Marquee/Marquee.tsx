@@ -1,16 +1,19 @@
 import { ReactNode, FC } from "react";
 import style from "./Marquee.module.css";
+import ReactFastMarquee from "react-fast-marquee";
 
 interface Props {
-  children: ReactNode[]
+  children: ReactNode[] | ReactNode
 }
 
 const Marquee: FC<Props> = ({ children }) => {
   return (
     <div className={style.root}>
-      <div className={style.container}>
-        {children}
-      </div>
+      <ReactFastMarquee speed={50}>
+        <div className={style.container}>
+          {children}
+        </div>
+      </ReactFastMarquee>
     </div>
   )
 }
