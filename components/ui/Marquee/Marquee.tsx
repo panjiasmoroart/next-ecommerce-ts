@@ -20,7 +20,7 @@ const Marquee: FC<Props> = ({ children, direction = "left", variant = "primary",
 
   return (
     <div className={rootClassName}>
-      <ReactFastMarquee speed={50} gradient={gradient} direction={direction} loop={6} play={true}>
+      <ReactFastMarquee speed={50} gradient={gradient} direction={direction} loop={0} play={true}>
         <div className={style.container}>
           {children}
         </div>
