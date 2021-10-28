@@ -1,6 +1,7 @@
 .root {
-  @apply flex items-center bg-black;
+  @apply flex items-center;
   height: 320px;
+  background: #e0e0e0;
 }
 
 .secondary {
