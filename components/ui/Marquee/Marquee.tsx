@@ -9,7 +9,7 @@ interface Props {
 const Marquee: FC<Props> = ({ children }) => {
   return (
     <div className={style.root}>
-      <ReactFastMarquee speed={50}>
+      <ReactFastMarquee speed={50} gradient={true}>
         <div className={style.container}>
           {children}
         </div>

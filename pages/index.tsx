@@ -44,6 +44,16 @@ export default function Home({
           />
         )}
       </Marquee>
+      <div className="z-40 relative">
+        <Grid layout="B">
+          {products.slice(0, 3).map(product => 
+            <ProductCard 
+              key={product.id}
+              product={product} 
+            />
+          )}
+        </Grid>
+      </div>
     </>
   )
 }
