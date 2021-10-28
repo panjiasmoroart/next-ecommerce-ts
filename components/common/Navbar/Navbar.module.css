@@ -3,10 +3,10 @@
 }
 
 .link {
-  @apply text-accents-6 leading-6 font-medium transition;
+  @apply leading-6 font-medium transition text-primary;
 
   &:hover {
-    @apply text-accents-9;
+    @apply text-accents-6 transition scale-110 duration-100;
   }
 }
 
