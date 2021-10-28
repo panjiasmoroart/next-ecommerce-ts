@@ -1,5 +1,10 @@
 .root {
-  height: 420px;
+  @apply flex items-center bg-black;
+  height: 320px;
+}
+
+.secondary {
+  @apply bg-white;
 }
 
 .container {
