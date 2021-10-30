@@ -1,5 +1,9 @@
-import { createContext, useContext, FC, useReducer } from "react"
-
+import { 
+  createContext, 
+  useContext, 
+  FC, 
+  useReducer, 
+  useMemo } from "react"
 export interface StateModifiers {
   openSidebar: () => void
   closeSidebar: () => void
@@ -36,7 +40,7 @@ function uiReducer(state: StateValues, action: Action) {
     case "CLOSE_SIDEBAR": {
       return {
         ...state,
-        isSidebarOpen: true
+        isSidebarOpen: false
       }
     }
   }
@@ -48,13 +52,13 @@ export const UIProvider: FC = ({ children }) => {
   const openSidebar = () => dispatch({type: "OPEN_SIDEBAR"});
   const closeSidebar = () => dispatch({type: "CLOSE_SIDEBAR"});
 
-  const value = {
-    // isSidebarOpen: state.isSidebarOpen, 
-    ...state,
-    openSidebar,
-    closeSidebar,
-  }
-
+  const value = useMemo(() => {
+    return {
+      ...state,
+      openSidebar,
+      closeSidebar,
+    }
+  }, [state.isSidebarOpen])
 
   return(
     <UIContext.Provider value={value}>
