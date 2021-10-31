@@ -1,8 +1,10 @@
 export type ApiFetcherOptions = {
   url: string
   query: string
-  variables?: any
+  variables?: Variables  
 }
+                     // { "slug": "t-shirt" }
+export type Variables = {[key: string]: string}
 
 export type ApiFetcherResults<T> = {
   data: T
