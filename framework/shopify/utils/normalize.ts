@@ -1,9 +1,10 @@
-import { ProductVariantConnection } from './../schema.d';
 import { 
   ImageEdge,
   MoneyV2,
   Product as ShopifyProduct, 
-  ProductOption
+  ProductOption,
+  ProductVariantConnection,
+  SelectedOption
 } from "../schema";
 
 import { Product } from "@common/types/product";
@@ -77,7 +78,16 @@ const normalizeProductVariants = ({edges}: ProductVariantConnection) => {
       sku: sku || id,
       price: +priceV2.amount,
       listPrice: +compareAtPriceV2?.amount,
-      requiresShipping: true
+      requiresShipping: true,
+      options: selectedOptions.map(({name, value}: SelectedOption) => {
+        const options = normalizeProductOption({
+          id,
+          name,
+          values: [value]
+        })
+
+        return options
+      })
     }
   })
 }
