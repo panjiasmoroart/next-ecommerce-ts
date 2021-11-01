@@ -1,11 +1,11 @@
 
-import cn from 'classnames'
 import { FC } from 'react'
-import s from './ProductView.module.css'
-import { Container, Button } from '@components/ui'
 import Image from "next/image"
+import style from './ProductView.module.css'
+import { Container, Button } from '@components/ui'
 import { Product } from '@common/types/product'
 import { ProductSlider } from "@components/product"
+import cn from 'classnames'
 
 interface Props {
   product: Product
@@ -15,13 +15,13 @@ const ProductView: FC<Props> = ({ product }) => {
 
   return (
     <Container>
-      <div className={cn(s.root, 'fit', "mb-5")}>
-        <div className={cn(s.productDisplay, 'fit')}>
-          <div className={s.nameBox}>
-            <h1 className={s.name}>
+      <div className={cn(style.root, 'fit', "mb-5")}>
+        <div className={cn(style.productDisplay, 'fit')}>
+          <div className={style.nameBox}>
+            <h1 className={style.name}>
               {product.name}
             </h1>
-            <div className={s.price}>
+            <div className={style.price}>
               {product.price.value}
               {` `}
               {product.price.currencyCode}
@@ -29,9 +29,9 @@ const ProductView: FC<Props> = ({ product }) => {
           </div>
           <ProductSlider>
             {product.images.map(image =>
-              <div key={image.url} className={s.imageContainer}>
+              <div key={image.url} className={style.imageContainer}>
                 <Image
-                  className={s.img}
+                  className={style.img}
                   src={image.url}
                   alt={image.alt}
                   width={1050}
@@ -42,7 +42,7 @@ const ProductView: FC<Props> = ({ product }) => {
             )}
           </ProductSlider>
         </div>
-        <div className={s.sidebar}>
+        <div className={style.sidebar}>
           <section>
             <div className="pb-4">
               <h2 className="uppercase font-medium">Color</h2>
@@ -55,7 +55,10 @@ const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <Button>
+            <Button
+              className={style.button}
+              onClick={() => alert('add to cart')}
+            >
               Add to Cart
             </Button>
           </div>

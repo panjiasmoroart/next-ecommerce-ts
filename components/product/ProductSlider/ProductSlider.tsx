@@ -14,7 +14,7 @@ const ProductSlider: FC = ({children}) => {
     },
   })
 
-  console.log(currentSlide)
+  // console.log(currentSlide)
 
   return(
     <div className={style.root}>
