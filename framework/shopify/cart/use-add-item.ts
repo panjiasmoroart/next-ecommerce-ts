@@ -7,7 +7,9 @@ export const handler = {
     console.log("Fetching Data!")
   },
   useHook: () => {
+    debugger
     return (input: any) => {
+      debugger
       return {
         output: JSON.stringify(input) + "_MODIFIED"
       }
