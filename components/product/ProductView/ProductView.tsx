@@ -17,6 +17,7 @@ const ProductView: FC<Props> = ({ product }) => {
   
   const variant = getVariant(product, choices)
   // debugger
+  console.log('variant: ', variant)
   
   return (
     <Container>
