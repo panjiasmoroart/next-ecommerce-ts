@@ -6,21 +6,18 @@ import { Container, Button } from '@components/ui'
 import { Product } from '@common/types/product'
 import { ProductSlider, Swatch } from "@components/product"
 import cn from 'classnames'
+import { Choices, getVariant } from "../helpers"
 
 interface Props {
   product: Product
 }
 
-type AvailableChoices = "color" | "size" | string
-
-type Choices = {
-  [P in AvailableChoices]: string
-}
-
 const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({})
-
-  console.log(choices)
+  
+  const variant = getVariant(product, choices)
+  // debugger
+  
   return (
     <Container>
       <div className={cn(style.root, 'fit', "mb-5")}>
