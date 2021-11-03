@@ -4,8 +4,11 @@ import { MutationHook } from "@common/types/hooks";
 export default useAddItem
 
 export const handler: MutationHook = {
-  fetcher: (input: any) => {
-    return JSON.stringify(input) + "_MODIFIED"
+  fetcher: ({fetch, input}) => {
+    debugger
+    const response = fetch(input)
+    debugger
+    return response
   },
   useHook: ({fetch}) => {
     return (input: any) => {
