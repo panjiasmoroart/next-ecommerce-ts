@@ -9,13 +9,14 @@ export const handler = {
   },
   
   fetcher() {
+    console.log("I AM NOT CALLED :(")
     return {
       data: "cart ready"
     }
   },
 
-  useHook: ({fetch}: any) => {
-    const data = fetch()
+  useHook: ({useData}: any) => {
+    const data = useData()
     return {
       data
     }
