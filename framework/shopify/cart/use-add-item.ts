@@ -21,14 +21,10 @@ export const handler: MutationHook = {
       ]
     }
 
-    debugger
-
     const response = await fetch({
       ...options,
       variables: variables
     })
-
-    debugger
     
     return response
   },
