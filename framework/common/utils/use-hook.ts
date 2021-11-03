@@ -12,12 +12,12 @@ export const useMutationHook = (
 ) => {
   return hook.useHook({
     fetch: (input: any) => {
-      debugger
       return hook.fetcher({
         input,
-        fetch: (input: any) => {
-          debugger
-          return JSON.stringify(input) + "_MODIFIED"
+        fetch: async (input: any) => {
+          return {
+            data: JSON.stringify(input) + "_MODIFIED"
+          }
         }
       })
     }
