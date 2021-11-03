@@ -7,10 +7,23 @@ export const handler: MutationHook = {
   fetcherOptions: {
     query: `query { hello }`
   },
-  fetcher: async({fetch, options}) => {
+  fetcher: async({fetch, options, input}) => {
+    
+    const variables = {
+      checkoutId: null,
+      lineItems: [
+        {
+          variantId: input.variantId,
+          quantity: 1
+        }
+      ]
+    }
+
     debugger
+    
     const response = await fetch({
-      ...options
+      ...options,
+      variables: variables
     })
     return response
   },
