@@ -29,21 +29,20 @@ const useData = (hook: any, fetcher: ApiFetcher) => {
   const [data, setData] = useState(null)
 
   const hookFetcher = async() => {
-    debugger
     try {
       return await hook.fetcher({
         fetch: fetcher,
-        options: hook.fetchOptions
+        options: hook.fetchOptions,
+        input: {}
       })     
     } catch (error) {
       throw error
     }
   }
 
-  debugger
+  
   if (!data) {
     hookFetcher().then(data => {
-      debugger
       setData(data)
     })
   }
@@ -57,9 +56,7 @@ export const useSWRHook = (hook: any) => {
 
   return hook.useHook({
     useData() {   
-      debugger
       const data = useData(hook, fetcher);
-      debugger
       return data
     }
   })
