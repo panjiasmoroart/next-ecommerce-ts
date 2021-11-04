@@ -1,4 +1,5 @@
 import { useApiProvider } from "@common"
+import { ApiFetcher } from "@common/types/api"
 import { ApiHooks } from "@common/types/hooks"
 import { MutationHook } from "@common/types/hooks"
 import { useState } from "react"
@@ -24,24 +25,40 @@ export const useMutationHook = (
   })
 }
 
-const useData = () => {
+const useData = (hook: any, fetcher: ApiFetcher) => {
   const [data, setData] = useState(null)
+
+  const hookFetcher = async() => {
+    debugger
+    try {
+      return await hook.fetcher({
+        fetch: fetcher,
+        options: hook.fetchOptions
+      })     
+    } catch (error) {
+      throw error
+    }
+  }
 
   debugger
   if (!data) {
-    setData({data: "Cart Ready!!!"} as any) 
+    hookFetcher().then(data => {
+      debugger
+      setData(data)
+    })
   }
-
-    debugger
+    
   return data
 }
 
 // cache data first if possible
 export const useSWRHook = (hook: any) => {
+  const { fetcher } = useApiProvider()
+
   return hook.useHook({
-    useData() {
+    useData() {   
       debugger
-      const data = useData();
+      const data = useData(hook, fetcher);
       debugger
       return data
     }
