@@ -18,7 +18,7 @@ export const handler = {
     // we need checkoutId
     console.log(checkoutId)
     debugger
-    
+
     // get chekcoutId
 
     // if there is no checkout then crate checkout
