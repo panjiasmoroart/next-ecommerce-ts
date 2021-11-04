@@ -17,7 +17,6 @@ export const handler = {
   }: any) {
     let checkout;
     
-    debugger
     if (checkoutId) {
       const { data } = await fetch({
         ...options
@@ -25,9 +24,9 @@ export const handler = {
 
       checkout = data.node
     } else {
-      checkout = await createCheckout()
+      checkout = await createCheckout(fetch)
     }
-    debugger
+  
     return checkout
   },
 
