@@ -39,9 +39,6 @@ const normalizeProductOption = ({
   values, 
   name: displayName
 }: ProductOption) => {
-  // console.log("ID", id)
-  // console.log("NAME", displayName)
-  // console.log("VALUES", values)
   // [ 's', 'l', 'm' ]
   // [{label: "l"}, {label: "s"}, {label: "m"}]
 

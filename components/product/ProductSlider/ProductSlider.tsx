@@ -9,12 +9,9 @@ const ProductSlider: FC = ({children}) => {
     initial: 0,
     loop: true,
     slideChanged(s) {
-      // console.log("changing to slide", s.details().relativeSlide)
       setCurrentSlide(s.details().relativeSlide)
     },
   })
-
-  // console.log(currentSlide)
 
   return(
     <div className={style.root}>
