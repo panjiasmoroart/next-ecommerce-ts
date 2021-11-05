@@ -6,7 +6,6 @@ export default useCart
 export const handler = {
   
   fetchOptions: {
-    // get checkout query
     query: "query { hello }"
   },
   
@@ -17,6 +16,7 @@ export const handler = {
   }: any) {
     let checkout;
     
+    debugger
     if (checkoutId) {
       const { data } = await fetch({
         ...options
