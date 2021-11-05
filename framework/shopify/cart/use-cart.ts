@@ -1,4 +1,3 @@
-import { Variables } from '@common/types/api';
 import useCart from "@common/cart/use-cart"
 import { createCheckout, getCheckoutQuery } from "@framework/utils";
 
