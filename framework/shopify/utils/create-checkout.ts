@@ -15,7 +15,6 @@ const createCheckout = async (
   const checkoutId = checkout?.id
   
   if (checkoutId) {
-    // debugger
     const options = {
       expires: SHOPIFY_COOKIE_EXPIRE
     }
@@ -23,8 +22,6 @@ const createCheckout = async (
     Cookies.set(SHOPIFY_CHECKOUT_ID_COOKIE, checkoutId)
     Cookies.set(SHOPIFY_CHECKOUT_URL_COOKIE, checkout?.webUrl)
   }
-
-  // debugger
 
   return checkout
 }
