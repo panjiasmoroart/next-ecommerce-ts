@@ -31,14 +31,17 @@ export const handler = {
       checkout = await createCheckout(fetch)
     }
   
+    // Normalize checkout!
     return checkout
   },
 
   useHook: ({useData}: any) => {
-    const data = useData()
+    const data = useData({
+      revalidateOnFocus: false
+    })
 
     return useMemo(() => {
-      debugger
+      
       return data
     }, [data])
   }
