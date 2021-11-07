@@ -1,4 +1,5 @@
 import { 
+  Checkout,
   ImageEdge,
   MoneyV2,
   Product as ShopifyProduct, 
@@ -8,6 +9,10 @@ import {
 } from "../schema";
 
 import { Product } from "@common/types/product";
+
+export const normalizeCart = (checkout: Checkout): any => {
+  return checkout
+}
 
 const normalizeProductImages = ({ edges }: { edges: Array<ImageEdge>}) => 
   // debugger
