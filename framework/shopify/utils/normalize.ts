@@ -5,7 +5,8 @@ import {
   Product as ShopifyProduct, 
   ProductOption,
   ProductVariantConnection,
-  SelectedOption
+  SelectedOption,
+  CheckoutLineItemEdge
 } from "../schema";
 import { Product } from "@common/types/product";
 import { Cart } from './../../common/types/cart';
@@ -20,8 +21,35 @@ export const normalizeCart = (checkout: Checkout): Cart => {
     taxesIncluded: checkout.taxesIncluded,
     lineItemsSubtotalPrice: +checkout.subtotalPriceV2.amount,
     totalPrice: checkout.totalPriceV2.amount,
-    lineItems: checkout.lineItems.edges.map(lineItemEdge => lineItemEdge.node),
+    lineItems: checkout.lineItems.edges.map(normalizeLineItem),
     discounts: []
+  }
+}
+
+const normalizeLineItem = ({
+   node: {id, title, variant, ...rest} 
+}: CheckoutLineItemEdge): any => {
+  debugger
+  return {
+    id,
+    variantId: String(variant?.id),
+    productId: String(variant?.id),
+    name: title,
+    path: variant?.product?.handle ?? "",
+    discounts: [],
+    // TODO: options 
+    variant: {
+      id: String(variant?.id),
+      sku: variant?.sku ?? "",
+      name: variant?.title,
+      // TODO: image
+      requiresShipping: variant?.requiresShipping ?? false,
+      // actual price
+      price: variant?.priceV2.amount,
+      // base price
+      listPrice: variant?.compareAtPriceV2?.amount,
+    },
+    ...rest
   }
 }
 
