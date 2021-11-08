@@ -65,9 +65,7 @@ const normalizeLineItem = ({
 }
 
 const normalizeProductImages = ({ edges }: { edges: Array<ImageEdge>}) => 
-  // debugger
   edges.map(({ node: {originalSrc: url, ...rest} }) => (
-    // debugger
     {
       // url: `/images/${node.originalSrc}`
       url: `/images/${url}`,
