@@ -29,7 +29,6 @@ export const normalizeCart = (checkout: Checkout): Cart => {
 const normalizeLineItem = ({
    node: {id, title, variant, ...rest} 
 }: CheckoutLineItemEdge): any => {
-  debugger
   return {
     id,
     variantId: String(variant?.id),
@@ -37,12 +36,24 @@ const normalizeLineItem = ({
     name: title,
     path: variant?.product?.handle ?? "",
     discounts: [],
-    // TODO: options 
+    options: variant?.selectedOptions.map(({name, value}: SelectedOption) => {
+      const options = normalizeProductOption({
+        id,
+        name,
+        values: [value]
+      })
+
+      return options
+    }), 
     variant: {
       id: String(variant?.id),
       sku: variant?.sku ?? "",
       name: variant?.title,
-      // TODO: image
+      image: {
+        url: process.env.NEXT_PUBLIC_FRAMEWORK === "shopify_local" ?
+        `/images/${variant?.image?.originalSrc}` : 
+        variant?.image?.originalSrc ?? "/product-image-placeholder.svg"
+      }, 
       requiresShipping: variant?.requiresShipping ?? false,
       // actual price
       price: variant?.priceV2.amount,
