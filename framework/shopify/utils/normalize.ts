@@ -14,7 +14,7 @@ import { Cart, LineItem } from '@common/types/cart';
 export const normalizeCart = (checkout: Checkout): Cart => {
   return {
     id: checkout.id,
-    createdAt: checkout.completedAt,
+    createdAt: checkout.createdAt,
     currency: {
       code: checkout.totalPriceV2.currencyCode
     },
