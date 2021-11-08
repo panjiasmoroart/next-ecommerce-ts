@@ -6,7 +6,7 @@ import { checkoutLineItemsAddMutation } from "@framework/utils/mutations";
 
 export default useAddItem
 
-export type AddItemHook = {
+export type AddItemHookDescriptor = {
   fetcherInput: {
     variantId: string
     quantity: number
@@ -14,7 +14,7 @@ export type AddItemHook = {
   data: Cart
 }
 
-export const handler: MutationHook = {
+export const handler: MutationHook<AddItemHookDescriptor> = {
   fetcherOptions: {
     query: checkoutLineItemsAddMutation
   },
@@ -30,19 +30,17 @@ export const handler: MutationHook = {
       ]
     }
 
-    const response = await fetch({
+    const { data } = await fetch({
       ...options,
       variables: variables
     })
     
-    return response
+    return data
   },
   useHook: ({fetch}) => {
-    return async (input: any) => {
+    return async (input) => {
       const response = await fetch(input)
-      return {
-        output: response
-      }
+      return response
     }
   }
 }
