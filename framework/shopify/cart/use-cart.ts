@@ -19,7 +19,6 @@ export type UseCartHookDescriptor = {
   data: Cart
 }
 
-
 export default useCart as UseCart<typeof handler>
 
 export const handler: SWRHook<UseCartHookDescriptor> = {
