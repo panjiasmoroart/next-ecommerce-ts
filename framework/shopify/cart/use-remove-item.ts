@@ -1,8 +1,10 @@
-import { getCheckoutId } from '@framework/utils';
+import { checkoutToCart, getCheckoutId } from '@framework/utils';
 import useRemoveItem from "@common/cart/use-remove-item"
 import { Cart } from "@common/types/cart"
 import { MutationHook } from "@common/types/hooks"
 import { CheckoutLineItemsRemovePayload } from "@framework/schema"
+import { checkoutLineItemsRemoveMutation } from '@framework/utils/mutations';
+import useCart from './use-cart';
 
 export default useRemoveItem
 
@@ -18,7 +20,8 @@ type RemoveItemDescriptor = {
 
 export const handler: MutationHook<RemoveItemDescriptor> = {
   fetcherOptions: {
-    query: "query { hello }"
+    // query: "query { hello }"
+    query: checkoutLineItemsRemoveMutation
   },
 
   async fetcher({
@@ -26,23 +29,26 @@ export const handler: MutationHook<RemoveItemDescriptor> = {
     options,
     fetch
   }) {
-    debugger
+    
     const { data } = await fetch({
       ...options,
       variables: {
         checkoutId: getCheckoutId(),
-        lineItemsIds: [id]
+        lineItemIds: [id]
       }
     })
-    debugger
-    return data + "_modified!!!" as any
+    
+    const cart = checkoutToCart(data.checkoutLineItemsRemove.checkout)    
+    return cart
   },
 
   useHook: ({fetch}) => () => {
+    const { mutate: updateCart } = useCart()
+    
     return async (input) => {
-      debugger
+      
       const data = await fetch(input)
-      debugger
+      updateCart(data, false)
       return data
     }
   }
