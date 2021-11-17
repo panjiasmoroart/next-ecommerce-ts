@@ -4,7 +4,11 @@ import {
   useMutationHook 
 } from "@common/utils/use-hook"
 
-const useUpdateItem = () => {
+export type UseUpdateItem<
+  H extends MutationHook = MutationHook<any>
+> = ReturnType<H["useHook"]>
+
+const useUpdateItem: UseUpdateItem = () => {
   const hook = useHook((hooks) => {
     return hooks.cart.useUpdateItem
   })
