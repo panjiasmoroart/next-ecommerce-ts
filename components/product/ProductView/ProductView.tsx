@@ -15,6 +15,7 @@ interface Props {
 }
 
 const ProductView: FC<Props> = ({ product }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const [choices, setChoices] = useState<Choices>({})
   const { openSidebar } = useUI()
   const addItem = useAddItem()
@@ -30,10 +31,12 @@ const ProductView: FC<Props> = ({ product }) => {
         quantity: 1
       }
 
+      setIsLoading(true)
       const output = await addItem(item)
+      setIsLoading(false)
       openSidebar()
     } catch (error) {
-      
+      setIsLoading(false)
     }
   }
   
@@ -101,6 +104,7 @@ const ProductView: FC<Props> = ({ product }) => {
             <Button
               className={style.button}
               onClick={addToCart}
+              isLoading={isLoading}
             >
               Add to Cart
             </Button>
